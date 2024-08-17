@@ -1,19 +1,26 @@
 #include <Arduino.h>
-
+#include <config.hpp>
+#include <hBridgeMotor.hpp>
 // put function declarations here:
-int myFunction(int, int);
+HBridgeMotor bridge1(PIN1A, PIN2A);
 
 void setup() {
   // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  bridge1.initialize();
+  Serial.begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  if(Serial.read() == 'a'){
+  	bridge1.setMotorA(true, 1);
+  }
+  if(Serial.read() == 'i')
+    bridge1.setMotorA(true, 2);
   
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  if(Serial.read() == 'b')
+  	bridge1.setMotorB(true, 1);
+  
+  if(Serial.read() == 'x')
+  	bridge1.setMotorB(true, 2);
 }

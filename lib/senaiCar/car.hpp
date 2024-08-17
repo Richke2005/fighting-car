@@ -10,4 +10,4 @@ class Car {
     public:
     void setBattery();
     void setVelocity();
-}
+};
