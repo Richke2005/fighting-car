@@ -16,5 +16,7 @@ class HBridgeMotor{
     HBridgeMotor(byte pin1A, byte pin2A);
     void initialize();
     void setMotorA(bool isOn, byte rotationDirection);
+    void setMotorA(float velocity, byte rotationDirection);
     void setMotorB(bool isOn, byte rotationDirection);
+    void setMotorB(float velocity, byte rotationDirection);
 };

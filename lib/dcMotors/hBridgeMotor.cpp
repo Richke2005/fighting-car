@@ -17,7 +17,7 @@ HBridgeMotor::HBridgeMotor(){
  * @param[in] pin2B The second pin for controlling the direction of the second motor.
  */
 HBridgeMotor::HBridgeMotor(byte pin1A, byte pin2A, byte pin1B, byte pin2B){
-      motorA.direction1 = pin1A;
+    motorA.direction1 = pin1A;
     motorA.direction2 = pin2A;
     motorB.direction1 = pin1B;
     motorB.direction2 = pin2B;
@@ -91,6 +91,8 @@ digitalWrite(direction, LOW);
  * @param[in] isOn A boolean value indicating whether the motor should be turned on (true) or off (false).
  * @param[in] rotationDirection An integer value representing the direction of the motor's rotation. It can take the values 1 or 2, corresponding to the first and second direction pins of the motor, respectively.
  */
+
+//TODO: melhorar função para controle do motor
 void HBridgeMotor::setMotorB(bool isOn, byte rotationDirection){
     byte direction;
     switch (rotationDirection)
