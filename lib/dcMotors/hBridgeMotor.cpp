@@ -63,19 +63,10 @@ void HBridgeMotor::initialize(){
  */
 void HBridgeMotor::setMotorA(bool isOn, byte rotationDirection){
     byte direction;
-    switch (rotationDirection)
-    {
-    case 1:
+    if(rotationDirection == 1)
         direction = motorA.direction1;
-        break;
-    
-    case 2: 
+    else 
         direction = motorA.direction2;
-        break;
-    default:
-        direction = NULL;
-        break;
-    }
     if(isOn){
         digitalWrite(direction, HIGH);
         Serial.println("pin: " + (String) direction + "ligado");
@@ -112,4 +103,42 @@ void HBridgeMotor::setMotorB(bool isOn, byte rotationDirection){
         digitalWrite(direction, HIGH);
     }
 digitalWrite(direction, LOW);
+}
+
+// @param[in] velocity passado em porcentagem representa a velocidade do motor.
+void HBridgeMotor::setMotorA(float velocity, byte rotationDirection){
+    byte direction;
+    //TODO: implementar função para controle de velocidade
+    int velocityValue = (velocity * 255) / 100;
+    switch (rotationDirection)
+    {
+    case 1:
+        direction = motorA.direction1;
+        break;
+    case 2: 
+        direction = motorA.direction2;
+        break;
+    default:
+        direction = NULL;
+        break;
+    }
+    analogWrite(velocityValue, direction);
+}
+
+void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
+    byte direction;
+    int velocityValue = (velocity * 255) / 100;
+    switch (rotationDirection)
+    {
+    case 1:
+        direction = motorA.direction1;
+        break;
+    case 2: 
+        direction = motorA.direction2;
+        break;
+    default:
+        direction = NULL;
+        break;
+    }
+    analogWrite(velocityValue, direction);
 }
