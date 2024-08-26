@@ -69,7 +69,8 @@ void HBridgeMotor::setMotorA(bool isOn, byte rotationDirection){
         direction = motorA.direction2;
     if(isOn){
         digitalWrite(direction, HIGH);
-        Serial.println("pin: " + (String) direction + "ligado");
+        //TODO: verify velocity of delay
+        delay(500);
     }
 digitalWrite(direction, LOW);
 }
@@ -101,6 +102,7 @@ void HBridgeMotor::setMotorB(bool isOn, byte rotationDirection){
     }
     if(isOn){
         digitalWrite(direction, HIGH);
+        delay(500);
     }
 digitalWrite(direction, LOW);
 }
