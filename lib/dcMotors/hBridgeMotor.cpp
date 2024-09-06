@@ -2,10 +2,10 @@
 #include "hBridgeMotor.hpp"
 
 HBridgeMotor::HBridgeMotor(){
-    motorA.direction1 = NULL;
-    motorA.direction2 = NULL;
-    motorB.direction1 = NULL;
-    motorB.direction2 = NULL;
+    motorA.direction1 = 0;
+    motorA.direction2 = 0;
+    motorB.direction1 = 0;
+    motorB.direction2 = 0;
 }
 
 /**
@@ -73,12 +73,12 @@ void HBridgeMotor::setMotorA(bool isOn, byte rotationDirection){
         direction = motorA.direction2;
         break;
     default:
-        direction = NULL;
+        direction = 0;
         break;
     }
     if(isOn){
         digitalWrite(direction, HIGH);
-        delay(135);
+        delay(100);
     }
 digitalWrite(direction, LOW);
 }
@@ -105,7 +105,7 @@ void HBridgeMotor::setMotorB(bool isOn, byte rotationDirection){
         direction = motorB.direction2;
         break;
     default:
-        direction = NULL;
+        direction = 0;
         break;
     }
     if(isOn){
@@ -128,7 +128,7 @@ void HBridgeMotor::setMotorA(float velocity, byte rotationDirection){
         direction = motorA.direction2;
         break;
     default:
-        direction = NULL;
+        direction = 0;
         break;
     }
     analogWrite(direction, velocityValue);
@@ -148,7 +148,7 @@ void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
         direction = motorA.direction2;
         break;
     default:
-        direction = NULL;
+        direction = 0;
         break;
     }
     analogWrite(direction, velocityValue);

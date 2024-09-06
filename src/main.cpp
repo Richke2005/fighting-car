@@ -1,13 +1,14 @@
 #include <Arduino.h>
 #include <config.hpp>
-#include <hBridgeMotor.hpp>
 #include <SoftwareSerial.h>
+#include <hBridgeMotor.hpp>
+
 // put function declarations here:
-const byte TX = 4;
-const byte RX = 5;
+const byte TX = 8;
+const byte RX = 7;
 
 HBridgeMotor bridge1(PIN1A, PIN2A);
-SoftwareSerial bluetooth(TX, RX);
+SoftwareSerial bluetooth(RX, TX);
 
 void setup() {
   // put your setup code here, to run once:
@@ -18,15 +19,19 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if(Serial.read() == 'a'){
-    bridge1.setMotorA((float) 0.0, 1);
+  if(bluetooth.available()){
+    char letra = bluetooth.read();
+    if(letra == '1'){
+      bridge1.setMotorA(true, 1);
+    }
+    if(letra == '2'){
+      bridge1.setMotorA(true, 2);
+    }
   }
-  if(Serial.read() == 'i')
-    bridge1.setMotorA(true, 2);
-  
-  if(Serial.read() == 'b')
-  	bridge1.setMotorB(true, 1);
-  
-  if(Serial.read() == 'x')
-  	bridge1.setMotorB(true, 2);
+
+  if(Serial.available()){
+      if(Serial.read() == '2'){
+      bridge1.setMotorA(true, 2);
+    }
+  }
 }
