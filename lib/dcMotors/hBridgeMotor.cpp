@@ -63,14 +63,22 @@ void HBridgeMotor::initialize(){
  */
 void HBridgeMotor::setMotorA(bool isOn, byte rotationDirection){
     byte direction;
-    if(rotationDirection == 1)
+    switch (rotationDirection)
+    {
+    case 1:
         direction = motorA.direction1;
-    else 
+        break;
+    
+    case 2: 
         direction = motorA.direction2;
+        break;
+    default:
+        direction = NULL;
+        break;
+    }
     if(isOn){
         digitalWrite(direction, HIGH);
-        //TODO: verify velocity of delay
-        delay(500);
+        delay(135);
     }
 digitalWrite(direction, LOW);
 }
@@ -102,7 +110,7 @@ void HBridgeMotor::setMotorB(bool isOn, byte rotationDirection){
     }
     if(isOn){
         digitalWrite(direction, HIGH);
-        delay(500);
+        delay(135);
     }
 digitalWrite(direction, LOW);
 }
@@ -110,7 +118,6 @@ digitalWrite(direction, LOW);
 // @param[in] velocity passado em porcentagem representa a velocidade do motor.
 void HBridgeMotor::setMotorA(float velocity, byte rotationDirection){
     byte direction;
-    //TODO: implementar função para controle de velocidade
     int velocityValue = (velocity * 255) / 100;
     switch (rotationDirection)
     {
@@ -124,9 +131,11 @@ void HBridgeMotor::setMotorA(float velocity, byte rotationDirection){
         direction = NULL;
         break;
     }
-    analogWrite(velocityValue, direction);
+    analogWrite(direction, velocityValue);
+    delay(135);
 }
 
+// @param[in] velocity passado em porcentagem representa a velocidade do motor.
 void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
     byte direction;
     int velocityValue = (velocity * 255) / 100;
@@ -142,5 +151,6 @@ void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
         direction = NULL;
         break;
     }
-    analogWrite(velocityValue, direction);
+    analogWrite(direction, velocityValue);
+    delay(135);
 }
