@@ -1,37 +1,20 @@
-#include <Arduino.h>
-#include <config.hpp>
-#include <SoftwareSerial.h>
-#include <hBridgeMotor.hpp>
-
-// put function declarations here:
-const byte TX = 8;
-const byte RX = 7;
-
-HBridgeMotor bridge1(PIN1A, PIN2A);
-SoftwareSerial bluetooth(RX, TX);
+#include <PS4Controller.h>
 
 void setup() {
-  // put your setup code here, to run once:
-  bridge1.initialize();
-  Serial.begin(9600);
-  bluetooth.begin(9600);
+  Serial.begin(115200);
+  PS4.begin();
+  Serial.println("Ready.");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  if(bluetooth.available()){
-    char letra = bluetooth.read();
-    if(letra == '1'){
-      bridge1.setMotorA(true, 1);
-    }
-    if(letra == '2'){
-      bridge1.setMotorA(true, 2);
-    }
-  }
-
-  if(Serial.available()){
-      if(Serial.read() == '2'){
-      bridge1.setMotorA(true, 2);
-    }
+  // Below has all accessible outputs from the controller
+  if (PS4.isConnected()) {
+    if (PS4.Right()) Serial.println("Right Button");
+    if (PS4.Down()) Serial.println("Down Button");
+    if (PS4.Up()) Serial.println("Up Button");
+    if (PS4.Left()) Serial.println("Left Button");
+    // This delay is to make the output more human readable
+    // Remove it when you're not trying to see the output
+    delay(1000);
   }
 }
