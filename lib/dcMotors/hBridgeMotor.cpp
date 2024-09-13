@@ -44,7 +44,7 @@ void HBridgeMotor::setMotorA(bool isOn, byte rotationDirection){
     }
     if(isOn){
         digitalWrite(direction, HIGH);
-        delay(100);
+        delay(135);
     }
 digitalWrite(direction, LOW);
 }
