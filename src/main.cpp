@@ -1,20 +1,22 @@
-#include <PS4Controller.h>
+#include <Arduino.h>
+#include <config.hpp>
+#include <hBridgeMotor.hpp>
+
+
+HBridgeMotor bridge1(PIN1A, PIN2A, PIN1B, PIN2B);
 
 void setup() {
-  Serial.begin(115200);
-  PS4.begin();
-  Serial.println("Ready.");
+  // put your setup code here, to run once:
+  bridge1.initialize();
+  Serial.begin(9600);
 }
 
 void loop() {
-  // Below has all accessible outputs from the controller
-  if (PS4.isConnected()) {
-    if (PS4.Right()) Serial.println("Right Button");
-    if (PS4.Down()) Serial.println("Down Button");
-    if (PS4.Up()) Serial.println("Up Button");
-    if (PS4.Left()) Serial.println("Left Button");
-    // This delay is to make the output more human readable
-    // Remove it when you're not trying to see the output
-    delay(1000);
+  // put your main code here, to run repeatedly:
+  if(Serial.available()){
+      if(Serial.read() == '2'){
+      bridge1.setMotorA(true, 2);
+      bridge1.setMotorB(true, 2);
+    }
   }
 }
