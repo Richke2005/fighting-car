@@ -2,14 +2,12 @@
 
 Car::Car() : battery(0.0), velocity(0.0), objectRadar(0.0) {}
 
-void Car::setBridges(byte in1, byte in2, byte in3, byte in4){
-    HBridgeMotor bridge1(in1, in2, in3, in4);
+void Car::foward(HBridgeMotor* motor1, HBridgeMotor* motor2){
+    motor1->setMotorA(true, 1);
+    motor2->setMotorB(true, 1);
 }
 
-void Car::foward(){
-
-}
-
-void Car::backward(){
-    
+void Car::backward(HBridgeMotor* motor1, HBridgeMotor* motor2){
+    motor1->setMotorA(true, 2);
+    motor2->setMotorB(true, 2);
 }

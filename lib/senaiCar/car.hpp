@@ -9,19 +9,15 @@ class Car {
     float velocity;
     bool connectionStatus;
     float objectRadar;
-    // atualizar bridges decidir se externas ou internas
-    HBridgeMotor bridge1;
-    HBridgeMotor bridge2;
 
     public:
     Car();
 
-
-    void setBridges(byte, byte, byte, byte);
+    void setBridges(HBridgeMotor* motor1);
     void getBattery();
     int getVelocity();
-    void foward();
-    void backward();
+    void foward(HBridgeMotor*, HBridgeMotor*);
+    void backward(HBridgeMotor*, HBridgeMotor*);
     void foward(int);
     void backward(int);
     void turnRight();

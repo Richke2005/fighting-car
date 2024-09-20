@@ -29,8 +29,7 @@ void HBridgeMotor::initialize(){
 
 void HBridgeMotor::setMotorA(bool isOn, byte rotationDirection){
     byte direction;
-    switch (rotationDirection)
-    {
+    switch (rotationDirection){
     case 1:
         direction = motorA.direction1;
         break;
@@ -52,8 +51,7 @@ digitalWrite(direction, LOW);
 //TODO: melhorar função para controle do motor
 void HBridgeMotor::setMotorB(bool isOn, byte rotationDirection){
     byte direction;
-    switch (rotationDirection)
-    {
+    switch (rotationDirection){
     case 1:
         direction = motorB.direction1;
         break;
@@ -75,8 +73,7 @@ digitalWrite(direction, LOW);
 void HBridgeMotor::setMotorA(float velocity, byte rotationDirection){
     byte direction;
     int velocityValue = (velocity * 255) / 100;
-    switch (rotationDirection)
-    {
+    switch (rotationDirection){
     case 1:
         direction = motorA.direction1;
         break;
@@ -94,8 +91,7 @@ void HBridgeMotor::setMotorA(float velocity, byte rotationDirection){
 void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
     byte direction;
     int velocityValue = (velocity * 255) / 100;
-    switch (rotationDirection)
-    {
+    switch (rotationDirection){
     case 1:
         direction = motorA.direction1;
         break;
@@ -108,4 +104,50 @@ void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
     }
     analogWrite(direction, velocityValue);
     delay(135);
+}
+
+void HBridgeMotor::continuousSetMotorA(bool isOn, byte rotationDirection){
+    byte direction, contrary;
+    switch (rotationDirection){
+    case 1:
+        direction = motorA.direction1;
+        contrary = motorA.direction2;
+        break;
+    
+    case 2: 
+        direction = motorA.direction2;
+        contrary = motorA.direction1;
+        break;
+    default:
+        direction = 0;
+        break;
+    }
+    if(isOn){
+        digitalWrite(direction, HIGH);
+        digitalWrite(contrary, LOW);
+        Serial.println("pin " + (String) direction + " HIGH");
+        Serial.println("pin " + (String) contrary + " LOW");
+    }
+}
+
+void HBridgeMotor::continuousSetMotorB(bool isOn, byte rotationDirection){
+    byte direction, contrary;
+    switch (rotationDirection){
+    case 1:
+        direction = motorB.direction1;
+        contrary = motorB.direction2;
+        break;
+    
+    case 2: 
+        direction = motorB.direction2;
+        contrary = motorB.direction1;
+        break;
+    default:
+        direction = 0;
+        break;
+    }
+    if(isOn){
+        digitalWrite(direction, HIGH);
+        digitalWrite(contrary, LOW);
+    }
 }
