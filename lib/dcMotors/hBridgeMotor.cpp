@@ -29,20 +29,20 @@ void HBridgeMotor::initialize(){
 
 void HBridgeMotor::setMotorA(bool isOn, byte rotationDirection){
     byte direction;
-    switch (rotationDirection)
-    {
-    case 1:
-        direction = motorA.direction1;
-        break;
-    
-    case 2: 
-        direction = motorA.direction2;
-        break;
-    default:
-        direction = 0;
-        break;
-    }
     if(isOn){
+        switch (rotationDirection)
+        {
+        case 1:
+            direction = motorA.direction1;
+            break;
+        
+        case 2: 
+            direction = motorA.direction2;
+            break;
+        default:
+            direction = 0;
+            break;
+        }
         digitalWrite(direction, HIGH);
         delay(135);
     }
@@ -52,20 +52,20 @@ digitalWrite(direction, LOW);
 //TODO: melhorar função para controle do motor
 void HBridgeMotor::setMotorB(bool isOn, byte rotationDirection){
     byte direction;
-    switch (rotationDirection)
-    {
-    case 1:
-        direction = motorB.direction1;
-        break;
-    
-    case 2: 
-        direction = motorB.direction2;
-        break;
-    default:
-        direction = 0;
-        break;
-    }
     if(isOn){
+        switch (rotationDirection)
+        {
+        case 1:
+            direction = motorB.direction1;
+            break;
+        
+        case 2: 
+            direction = motorB.direction2;
+            break;
+        default: 
+            direction = 0;
+            break;
+        }
         digitalWrite(direction, HIGH);
         delay(135);
     }
@@ -108,4 +108,96 @@ void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
     }
     analogWrite(direction, velocityValue);
     delay(135);
+}
+
+void HBridgeMotor::continuousSetMotorA(bool isOn, byte rotationDirection){
+    byte direction = motorA.direction1;
+    byte contrary = motorA.direction2;
+    if(isOn){
+        switch (rotationDirection)
+        {
+        case 1:
+            direction = motorA.direction1;
+            contrary = motorA.direction2;
+            break;
+    
+        case 2: 
+            direction = motorA.direction2;
+            contrary = motorA.direction1;
+            break;
+        default:
+            direction = 0;
+            break;
+        }
+        digitalWrite(direction, HIGH);
+        digitalWrite(contrary, LOW);
+    }else{
+        digitalWrite(direction, LOW);
+        digitalWrite(contrary, LOW);
+    }
+}
+
+void HBridgeMotor::continuousSetMotorB(bool isOn, byte rotationDirection){
+    byte direction = motorB.direction1;
+    byte contrary = motorB.direction2;
+    if(isOn){
+        switch (rotationDirection)
+        {
+        case 1:
+            direction = motorB.direction1;
+            contrary = motorB.direction2;
+            break;
+        
+        case 2: 
+            direction = motorB.direction2;
+            contrary = motorB.direction1;
+            break;
+        default:
+            direction = 0;
+            break;
+        }
+        digitalWrite(direction, HIGH);
+        digitalWrite(contrary, LOW);
+    }else{
+        digitalWrite(direction, LOW);
+        digitalWrite(contrary, LOW);
+    }
+}
+
+void HBridgeMotor::continuousSetMotorA(char command){
+    switch (command)
+    {
+    case 'f':
+        digitalWrite(motorA.direction1, HIGH);
+        digitalWrite(motorA.direction2, LOW);
+        break;
+    
+    case 'b':
+        digitalWrite(motorA.direction1, LOW);
+        digitalWrite(motorA.direction2, HIGH);
+        break;
+    default:
+        digitalWrite(motorA.direction1, LOW);
+        digitalWrite(motorA.direction2, LOW);
+        break;
+    }
+}
+
+void HBridgeMotor::continuousSetMotorB(char command){
+    switch (command)
+    {
+    case 'f':
+        digitalWrite(motorB.direction1, HIGH);
+        digitalWrite(motorB.direction2, LOW);
+        break;
+    
+    case 'b':
+        digitalWrite(motorB.direction1, LOW);
+        digitalWrite(motorB.direction2, HIGH);
+        break;
+    default:
+        digitalWrite(motorB.direction1, LOW);
+        digitalWrite(motorB.direction2, LOW);
+        break;
+    }
 }

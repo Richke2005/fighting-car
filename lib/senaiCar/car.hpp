@@ -1,7 +1,6 @@
 #pragma once
 #include <Arduino.h>
 #include "../dcMotors/hBridgeMotor.hpp"
-#include "../include/config.hpp"
 
 class Car {
     protected: 
@@ -9,15 +8,12 @@ class Car {
     float velocity;
     bool connectionStatus;
     float objectRadar;
-    // atualizar bridges decidir se externas ou internas
-    HBridgeMotor bridge1;
-    HBridgeMotor bridge2;
 
     public:
     Car();
 
 
-    void setBridges(byte, byte, byte, byte);
+    void setBridges(HBridgeMotor*, HBridgeMotor*);
     void getBattery();
     int getVelocity();
     void foward();

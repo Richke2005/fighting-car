@@ -2,7 +2,6 @@
 #include <config.hpp>
 #include <hBridgeMotor.hpp>
 
-
 HBridgeMotor bridge1(PIN1A, PIN2A);
 
 void setup() {
