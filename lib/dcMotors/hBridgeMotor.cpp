@@ -110,7 +110,7 @@ void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
     delay(135);
 }
 
-void HBridgeMotor::continuousSetMotorA(bool isOn, byte rotationDirection){
+void HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
     byte direction = motorA.direction1;
     byte contrary = motorA.direction2;
     if(isOn){
@@ -119,25 +119,27 @@ void HBridgeMotor::continuousSetMotorA(bool isOn, byte rotationDirection){
         case 1:
             direction = motorA.direction1;
             contrary = motorA.direction2;
+            digitalWrite(direction, isOn);
+            digitalWrite(contrary, !isOn);
             break;
     
         case 2: 
             direction = motorA.direction2;
             contrary = motorA.direction1;
+            digitalWrite(direction, isOn);
+            digitalWrite(contrary, !isOn);
             break;
         default:
             direction = 0;
             break;
         }
-        digitalWrite(direction, HIGH);
-        digitalWrite(contrary, LOW);
     }else{
-        digitalWrite(direction, LOW);
-        digitalWrite(contrary, LOW);
+        digitalWrite(direction, isOn);
+        digitalWrite(contrary, isOn);
     }
 }
 
-void HBridgeMotor::continuousSetMotorB(bool isOn, byte rotationDirection){
+void HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
     byte direction = motorB.direction1;
     byte contrary = motorB.direction2;
     if(isOn){
@@ -146,21 +148,23 @@ void HBridgeMotor::continuousSetMotorB(bool isOn, byte rotationDirection){
         case 1:
             direction = motorB.direction1;
             contrary = motorB.direction2;
+            digitalWrite(direction, isOn);
+            digitalWrite(contrary, !isOn);
             break;
-        
+    
         case 2: 
             direction = motorB.direction2;
             contrary = motorB.direction1;
+            digitalWrite(direction, isOn);
+            digitalWrite(contrary, !isOn);
             break;
         default:
             direction = 0;
             break;
         }
-        digitalWrite(direction, HIGH);
-        digitalWrite(contrary, LOW);
     }else{
-        digitalWrite(direction, LOW);
-        digitalWrite(contrary, LOW);
+        digitalWrite(direction, isOn);
+        digitalWrite(contrary, isOn);
     }
 }
 

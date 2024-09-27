@@ -14,7 +14,14 @@ void loop() {
   // put your main code here, to run repeatedly:
   if(Serial.available()){
       char command = Serial.read();
-      bridge1.continuousSetMotorA(command);
+      if(command == 'l'){
+        bridge1.continuousSetMotorA(HIGH, 1);
+      }
+      if(command == 'r'){
+        bridge1.continuousSetMotorA(HIGH, 2);
+      }
+      if(command == 's'){
+        bridge1.continuousSetMotorA(LOW, 0);
+      }
     }
-          
   }
