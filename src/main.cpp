@@ -16,12 +16,15 @@ void loop() {
       char command = Serial.read();
       if(command == 'l'){
         bridge1.continuousSetMotorA(HIGH, 1);
+        bridge1.continuousSetMotorB(HIGH, 1);
       }
       if(command == 'r'){
         bridge1.continuousSetMotorA(HIGH, 2);
+        bridge1.continuousSetMotorB(HIGH, 2);
       }
       if(command == 's'){
         bridge1.continuousSetMotorA(LOW, 0);
+        bridge1.continuousSetMotorB(LOW, 0);
       }
     }
   }
