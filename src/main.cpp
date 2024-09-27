@@ -17,8 +17,12 @@ void loop() {
   if(Serial.available()){
       char command = Serial.read();
       if(command == 'l'){
-        bridge1.continuousSetMotorA(HIGH, 1);
+        int dirBridge1 = bridge1.continuousSetMotorA(HIGH, 1);
         bridge1.continuousSetMotorB(HIGH, 1);
+        if(dirBridge1 == 0){
+          Serial.println("motor A is off");
+        }
+        Serial.println("motor A is on, direction " + (String) dirBridge1);
       }
       if(command == 'r'){
         bridge1.continuousSetMotorA(HIGH, 2);

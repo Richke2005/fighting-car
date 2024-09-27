@@ -11,8 +11,6 @@ class Car {
 
     public:
     Car();
-
-
     void setBridges(HBridgeMotor*, HBridgeMotor*);
     void getBattery();
     int getVelocity();

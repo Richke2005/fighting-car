@@ -108,7 +108,7 @@ void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
     delay(135);
 }
 
-void HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
+int HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
     byte direction = motorA.direction1;
     byte contrary = motorA.direction2;
     if(isOn){
@@ -119,6 +119,7 @@ void HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
             contrary = motorA.direction2;
             digitalWrite(direction, isOn);
             digitalWrite(contrary, !isOn);
+            return 1;
             break;
     
         case 2: 
@@ -126,14 +127,17 @@ void HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
             contrary = motorA.direction1;
             digitalWrite(direction, isOn);
             digitalWrite(contrary, !isOn);
+            return 2;
             break;
         default:
             direction = 0;
+            return 0;
             break;
         }
     }else{
         digitalWrite(direction, isOn);
         digitalWrite(contrary, isOn);
+        return 0;
     }
 }
 
