@@ -1,8 +1,10 @@
 #include <Arduino.h>
-#include <config.hpp>
+#include <SoftwareSerial.h>
 #include <hBridgeMotor.hpp>
+#include <config.hpp>
 
 HBridgeMotor bridge1(PIN1A, PIN2A, PIN1B, PIN2B);
+// SoftwareSerial bluetooth(RX, TX);
 
 void setup() {
   // put your setup code here, to run once:

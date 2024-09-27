@@ -16,8 +16,8 @@ class Car {
     void setBridges(HBridgeMotor*, HBridgeMotor*);
     void getBattery();
     int getVelocity();
-    void foward();
-    void backward();
+    void foward(HBridgeMotor*, HBridgeMotor*);
+    void backward(HBridgeMotor*, HBridgeMotor*);
     void foward(int);
     void backward(int);
     void turnRight();

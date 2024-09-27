@@ -75,8 +75,7 @@ digitalWrite(direction, LOW);
 void HBridgeMotor::setMotorA(float velocity, byte rotationDirection){
     byte direction;
     int velocityValue = (velocity * 255) / 100;
-    switch (rotationDirection)
-    {
+    switch (rotationDirection){
     case 1:
         direction = motorA.direction1;
         break;
@@ -94,8 +93,7 @@ void HBridgeMotor::setMotorA(float velocity, byte rotationDirection){
 void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
     byte direction;
     int velocityValue = (velocity * 255) / 100;
-    switch (rotationDirection)
-    {
+    switch (rotationDirection){
     case 1:
         direction = motorA.direction1;
         break;

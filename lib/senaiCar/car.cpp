@@ -6,10 +6,7 @@ void Car::setBridges(HBridgeMotor* bridge1, HBridgeMotor* bridge2){
     bridge1->initialize();
 }
 
-void Car::foward(){
-
-}
-
-void Car::backward(){
-    
+void Car::backward(HBridgeMotor* motor1, HBridgeMotor* motor2){
+    motor1->setMotorA(true, 2);
+    motor2->setMotorB(true, 2);
 }
