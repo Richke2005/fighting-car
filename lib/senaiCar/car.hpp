@@ -1,7 +1,6 @@
 #pragma once
 #include <Arduino.h>
 #include "../dcMotors/hBridgeMotor.hpp"
-#include "../include/config.hpp"
 
 class Car {
     protected: 
@@ -13,7 +12,8 @@ class Car {
     public:
     Car();
 
-    void setBridges(HBridgeMotor* motor1);
+
+    void setBridges(HBridgeMotor*, HBridgeMotor*);
     void getBattery();
     int getVelocity();
     void foward(HBridgeMotor*, HBridgeMotor*);

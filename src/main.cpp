@@ -3,7 +3,6 @@
 #include <hBridgeMotor.hpp>
 #include <config.hpp>
 
-
 HBridgeMotor bridge1(PIN1A, PIN2A, PIN1B, PIN2B);
 // SoftwareSerial bluetooth(RX, TX);
 
@@ -16,7 +15,15 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   if(Serial.available()){
-      char letra = Serial.read();
-      bridge1.continuousSetMotorA((letra == 'l') , 1);
+      char command = Serial.read();
+      if(command == 'l'){
+        bridge1.continuousSetMotorA(HIGH, 1);
+      }
+      if(command == 'r'){
+        bridge1.continuousSetMotorA(HIGH, 2);
+      }
+      if(command == 's'){
+        bridge1.continuousSetMotorA(LOW, 0);
+      }
+    }
   }
-};

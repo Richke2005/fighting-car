@@ -70,7 +70,9 @@ class HBridgeMotor{
     // @param[in] velocity passado em porcentagem representa a velocidade do motor.
     void setMotorB(float velocity, byte rotationDirection);
 
-    void continuousSetMotorA(bool isOn, byte rotationDirection);
-    
-    void continuousSetMotorB(bool isOn, byte rotationDirection);
+    void continuousSetMotorA(uint8_t isOn, byte rotationDirection);
+    void continuousSetMotorA(char command);
+
+    void continuousSetMotorB(uint8_t isOn, byte rotationDirection);
+    void continuousSetMotorB(char command);
 };
