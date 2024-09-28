@@ -7,5 +7,5 @@ const byte PIN1B = 6;
 const byte PIN2B = 9;
 
 //pin RX TX
-const byte RX;
-const byte TX;
+// const byte RX;
+// const byte TX;

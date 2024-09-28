@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include "hBridgeMotor.hpp"
 
 HBridgeMotor::HBridgeMotor(){
@@ -141,7 +140,7 @@ int HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
     }
 }
 
-void HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
+int HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
     byte direction = motorB.direction1;
     byte contrary = motorB.direction2;
     if(isOn){
@@ -152,6 +151,7 @@ void HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
             contrary = motorB.direction2;
             digitalWrite(direction, isOn);
             digitalWrite(contrary, !isOn);
+            return 1;
             break;
     
         case 2: 
@@ -159,6 +159,7 @@ void HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
             contrary = motorB.direction1;
             digitalWrite(direction, isOn);
             digitalWrite(contrary, !isOn);
+            return 2;
             break;
         default:
             direction = 0;
@@ -167,43 +168,6 @@ void HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
     }else{
         digitalWrite(direction, isOn);
         digitalWrite(contrary, isOn);
-    }
-}
-
-void HBridgeMotor::continuousSetMotorA(char command){
-    switch (command)
-    {
-    case 'f':
-        digitalWrite(motorA.direction1, HIGH);
-        digitalWrite(motorA.direction2, LOW);
-        break;
-    
-    case 'b':
-        digitalWrite(motorA.direction1, LOW);
-        digitalWrite(motorA.direction2, HIGH);
-        break;
-    default:
-        digitalWrite(motorA.direction1, LOW);
-        digitalWrite(motorA.direction2, LOW);
-        break;
-    }
-}
-
-void HBridgeMotor::continuousSetMotorB(char command){
-    switch (command)
-    {
-    case 'f':
-        digitalWrite(motorB.direction1, HIGH);
-        digitalWrite(motorB.direction2, LOW);
-        break;
-    
-    case 'b':
-        digitalWrite(motorB.direction1, LOW);
-        digitalWrite(motorB.direction2, HIGH);
-        break;
-    default:
-        digitalWrite(motorB.direction1, LOW);
-        digitalWrite(motorB.direction2, LOW);
-        break;
+        return 0;
     }
 }

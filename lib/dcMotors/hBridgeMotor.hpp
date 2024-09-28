@@ -71,8 +71,6 @@ class HBridgeMotor{
     void setMotorB(float velocity, byte rotationDirection);
 
     int continuousSetMotorA(uint8_t isOn, byte rotationDirection);
-    void continuousSetMotorA(char command);
 
-    void continuousSetMotorB(uint8_t isOn, byte rotationDirection);
-    void continuousSetMotorB(char command);
+    int continuousSetMotorB(uint8_t isOn, byte rotationDirection);
 };
