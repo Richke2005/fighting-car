@@ -168,6 +168,6 @@ int HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
     }else{
         digitalWrite(direction, isOn);
         digitalWrite(contrary, isOn);
-        return 0;
+        return isOn;
     }
 }

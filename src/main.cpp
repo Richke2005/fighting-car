@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <SoftwareSerial.h>
+//#include <SoftwareSerial.h>
 #include <hBridgeMotor.hpp>
 #include "./controller/controller.hpp"
 #include <config.hpp>
