@@ -180,7 +180,6 @@ int HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
             break;
         default:
             direction = 0;
-            return 0;
             break;
         }
     }else{
