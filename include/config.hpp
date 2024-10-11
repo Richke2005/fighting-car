@@ -9,3 +9,6 @@ const byte PIN2B = 9;
 //pin RX TX
 // const byte RX;
 // const byte TX;
+
+// pin Servo 
+const byte PIN_SERVO = 12;
