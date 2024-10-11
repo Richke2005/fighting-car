@@ -89,6 +89,30 @@ void HBridgeMotor::setMotorA(float velocity, byte rotationDirection){
     delay(135);
 }
 
+int HBridgeMotor::setMotorA(float velocity, byte rotationDirection, byte pinPWM){
+    byte direction;
+    int velocityValue = (velocity * 255) / 100;
+    switch (rotationDirection){
+    case 1:
+        direction = motorA.direction1;
+        digitalWrite(direction, HIGH);
+        analogWrite(pinPWM, velocityValue);
+        return velocityValue;
+        break;
+    case 2: 
+        direction = motorA.direction2;
+        digitalWrite(direction, HIGH);
+        analogWrite(pinPWM, velocityValue);
+        return velocityValue;
+        break;
+    default:
+        direction = 0;
+        break;
+    }
+    digitalWrite(direction, LOW);
+    delay(135);
+}
+
 void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
     byte direction;
     int velocityValue = (velocity * 255) / 100;
@@ -106,6 +130,32 @@ void HBridgeMotor::setMotorB(float velocity, byte rotationDirection){
     analogWrite(direction, velocityValue);
     delay(135);
 }
+
+int HBridgeMotor::setMotorB(float velocity, byte rotationDirection, byte pinPWM){
+    byte direction;
+    int velocityValue = (velocity * 255) / 100;
+    switch (rotationDirection){
+    case 1:
+        direction = motorB.direction1;
+        digitalWrite(direction, HIGH);
+        analogWrite(pinPWM, velocityValue);
+        return velocityValue;
+        break;
+    case 2: 
+        direction = motorB.direction2;
+        digitalWrite(direction, HIGH);
+        analogWrite(pinPWM, velocityValue);
+        return velocityValue;
+        break;
+    default:
+        direction = 0;
+        break;
+    }
+    digitalWrite(direction, LOW);
+    delay(135);
+}
+
+
 
 int HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
     byte direction = motorA.direction1;
