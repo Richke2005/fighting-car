@@ -1,12 +1,26 @@
 #include "./car.hpp"
 
-Car::Car() : battery(0.0), velocity(0.0), objectRadar(0.0) {}
+Car::Car() : pinBattery(-1), battery(0.0), velocity(0.0), objectRadar(0.0) {}
 
-void Car::setBridges(HBridgeMotor* bridge1, HBridgeMotor* bridge2){
-    bridge1->initialize();
+Car::Car(uint8_t pin){
+    if(pin < 0 || pin > 13) 
+        Serial.println("Invalid pin for battery: " + (String) pin);
+        
+    this->pinBattery = pin;
+    pinMode(this->pinBattery, INPUT);
+    this->battery = (float) 12 * analogRead(this->pinBattery) / 1024;
 }
 
-void Car::backward(HBridgeMotor* motor1, HBridgeMotor* motor2){
-    motor1->setMotorA(true, 2);
-    motor2->setMotorB(true, 2);
+void Car::attachBattery(uint8_t pin){
+    if(this->pinBattery != -1) 
+        Serial.println("Car aready have one port in use and will be changed to: " + (String) pin);
+    
+    this->pinBattery = pin;
+    pinMode(this->pinBattery, INPUT);
+}
+
+float Car::getBattery(){
+    int valueOfBytes = analogRead(this->pinBattery);
+    this->battery = (float) 12 * valueOfBytes / 1024;
+    return this->battery;
 }

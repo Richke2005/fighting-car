@@ -1,35 +1,27 @@
 #include <Arduino.h>
-#include <Servo.h>
-#include <SoftwareSerial.h>
-#include <hBridgeMotor.hpp>
-#include "./controller/controller.hpp"
 #include <config.hpp>
+#include <SoftwareSerial.h>
+#include "../lib/senaiCar/ardCar/ardCar.hpp"
 
-HBridgeMotor bridge1(PIN1A, PIN2A, PIN1B, PIN2B);
 SoftwareSerial bluetooth(RX, TX);
-Servo servoMotor;
-
+HBridgeMotor bridge1(H1_PIN1A, H1_PIN2A, H1_PIN1B, H1_PIN2B);
+HBridgeMotor bridge2(H2_PIN1A, H2_PIN2A);
+ArdCar car;
 
 void setup() {
   // put your setup code here, to run once:
   bridge1.initialize();
-  servoMotor.attach(PIN_SERVO);
+  bridge2.initialize();
+  car.attachBattery(PIN_BATTERY);
   Serial.begin(9600);
   bluetooth.begin(9600);
 }
 
 void loop() {
-  if(Serial.available()){
-    char command = Serial.read();
-    char bCommand = bluetooth;
-    Controller::controllerForward(&command, &bridge1);
-    Controller::controllerBackward(&command, &bridge1);
-    Controller::controllerStop(&command, &bridge1);
-    if(command == 'q'){
-      servoMotor.write(0);
-    }
-    if(command == 'w'){
-      servoMotor.write(90);
-    }
+  if(bluetooth.available()){
+    char bCommand = bluetooth.read();
+    ArdCar::controllerForward(&bCommand, &bluetooth);
+    ArdCar::controllerBackward(&bCommand, &bluetooth);
+    ArdCar::controllerStop(&bCommand, &bluetooth);
   }
 }

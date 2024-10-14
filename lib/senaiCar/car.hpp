@@ -1,23 +1,19 @@
 #pragma once
-#include <Arduino.h>
 #include "../dcMotors/hBridgeMotor.hpp"
+#include "../../include/config.hpp"
 
 class Car {
     protected: 
+    uint8_t pinBattery;
     float battery;
     float velocity;
     bool connectionStatus;
     float objectRadar;
-
+    
     public:
     Car();
-    void setBridges(HBridgeMotor*, HBridgeMotor*);
-    void getBattery();
+    Car(uint8_t pin);
+    void attachBattery(uint8_t pinBattery);
+    float getBattery();
     int getVelocity();
-    void foward(HBridgeMotor*, HBridgeMotor*);
-    void backward(HBridgeMotor*, HBridgeMotor*);
-    void foward(int);
-    void backward(int);
-    void turnRight();
-    void turnLeft();
 };

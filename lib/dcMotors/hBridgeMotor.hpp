@@ -52,11 +52,11 @@ class HBridgeMotor{
     * @param[in] isOn A boolean value indicating whether the motor should be turned on (true) or off (false).
     * @param[in] rotationDirection An integer value representing the direction of the motor's rotation. It can take the values 1 or 2, corresponding to the first and second direction pins of the motor, respectively.
     */
-    void setMotorA(bool isOn, byte rotationDirection);
+    int setMotorA(bool isOn, byte rotationDirection);
 
     // @param[in] velocity velocity passado em porcentagem representa a velocidade do motor.
-    void setMotorA(float velocity, byte rotationDirection);
-    int setMotorA(float velocity, byte rotationDirection, byte pinPWM);
+    int setMotorA(int velocity, byte rotationDirection);
+    int setMotorA(int velocity, byte rotationDirection, byte pinPWM);
 
     /**
     * @brief Sets the state of the second motor.
@@ -66,11 +66,11 @@ class HBridgeMotor{
     * @param[in] isOn A boolean value indicating whether the motor should be turned on (true) or off (false).
     * @param[in] rotationDirection An integer value representing the direction of the motor's rotation. It can take the values 1 or 2, corresponding to the first and second direction pins of the motor, respectively.
     */
-    void setMotorB(bool isOn, byte rotationDirection);
+    int setMotorB(bool isOn, byte rotationDirection);
 
     // @param[in] velocity passado em porcentagem representa a velocidade do motor.
-    void setMotorB(float velocity, byte rotationDirection);
-    int setMotorB(float velocity, byte rotationDirection, byte pinPWM);
+    int setMotorB(int velocity, byte rotationDirection);
+    int setMotorB(int velocity, byte rotationDirection, byte pinPWM);
 
     int continuousSetMotorA(uint8_t isOn, byte rotationDirection);
 
