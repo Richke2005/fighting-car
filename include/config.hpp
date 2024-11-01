@@ -5,7 +5,7 @@
 const byte H1_PIN1A = 3;
 const byte H1_PIN2A = 5;
 const byte H1_PIN1B = 6;
-const byte H1_PIN2B = 8;
+const byte H1_PIN2B = 9;
 
 // Pins de conexão ponteH 2
 const byte H2_PIN1A = 10;
@@ -19,6 +19,6 @@ const byte RX = 4;
 const byte TX = 2;
 
 // Pin Servo 
-const byte PIN_SERVO = 9;
+const byte PIN_SERVO = 12;
 
 

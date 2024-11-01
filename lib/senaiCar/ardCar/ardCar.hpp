@@ -12,9 +12,7 @@ class ArdCar : public Car{
     ArdCar(uint8_t pin);
     static void controllerForward(char* command, SoftwareSerial* response);
     static void controllerBackward(char* command, SoftwareSerial* response);
-    //TODO
     static void controllerTurnRight(char* command, SoftwareSerial* response);
-    //TODO
     static void controllerTurnLeft(char* command, SoftwareSerial* response);
     static void controllerStop(char* command, SoftwareSerial* response);
     static void controllerServAxisY(char* command, SoftwareSerial* response);
