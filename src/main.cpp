@@ -22,6 +22,8 @@ void loop() {
     char bCommand = bluetooth.read();
     Serial.println(bCommand);
     ArdCar::controllerForward(&bCommand, &bluetooth);
+    ArdCar::controllerTurnRight(&bCommand, &bluetooth);
+    ArdCar::controllerTurnLeft(&bCommand, &bluetooth);
     ArdCar::controllerBackward(&bCommand, &bluetooth);
     ArdCar::controllerStop(&bCommand, &bluetooth);
   }

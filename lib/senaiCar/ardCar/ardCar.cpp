@@ -27,6 +27,34 @@ void ArdCar::controllerBackward(char* command, SoftwareSerial* response){
     }
 }
 
+void ArdCar::controllerTurnRight(char* command, SoftwareSerial* response){
+    if(*command == 'r'){
+    int dirMA = bridge1.continuousSetMotorB(HIGH, 1);
+        if(dirMA == 0)
+            response->println("motors are off");
+        
+        response->println("motor A is on, port: " + (String) dirMA);
+    }
+}
+
+void ArdCar::controllerTurnLeft(char* command, SoftwareSerial* response){
+    if(*command == 'l'){
+    int dirMA = bridge1.continuousSetMotorB(HIGH, 2);
+        if(dirMA == 0)
+            response->println("motors are off");
+        
+        response->println("motor A is on, port: " + (String) dirMA);
+    }
+}
+
+void Ardcar::controllerStopDirection(char* command, SoftwareSerial* response){
+    if(*command == 's'){
+        bridge1.continuousSetMotorA(LOW, 0);
+        bridge2.continuousSetMotorA(LOW, 0);
+        response->println("motors are off");
+    }
+}
+
 void ArdCar::controllerStop(char* command, SoftwareSerial* response){
     if(*command == 's'){
         bridge1.continuousSetMotorA(LOW, 0);
