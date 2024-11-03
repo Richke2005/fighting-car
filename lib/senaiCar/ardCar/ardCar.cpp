@@ -5,11 +5,10 @@ ArdCar::ArdCar(uint8_t pin) : Car(pin) {};
 
 void ArdCar::controllerForward(char* command, SoftwareSerial* response){
     if(*command == 'l'){
-    int dirMA = bridge1.continuousSetMotorA(HIGH, 1);
-    int dirMB = bridge2.continuousSetMotorA(HIGH, 1);
+    int dirMA = bridge1.continuousSetMotorB(HIGH, 1);
+    int dirMB = bridge2.continuousSetMotorB(HIGH, 1);
         if(dirMA == 0 || dirMB == 0){
             response->println("motors are off");
-
         }
         response->println("motor A is on, port: " + (String) dirMA);
         response->println("motor B is on, port: " + (String) dirMB);
@@ -18,8 +17,8 @@ void ArdCar::controllerForward(char* command, SoftwareSerial* response){
 
 void ArdCar::controllerBackward(char* command, SoftwareSerial* response){
     if(*command == 'r'){
-    int dirMA = bridge1.continuousSetMotorA(HIGH, 2);
-    int dirMB = bridge2.continuousSetMotorA(HIGH, 2);
+    int dirMA = bridge1.continuousSetMotorB(HIGH, 2);
+    int dirMB = bridge2.continuousSetMotorB(HIGH, 2);
         if(dirMA == 0 || dirMB == 0){
             response->println("motors are off");
         }

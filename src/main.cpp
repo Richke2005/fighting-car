@@ -5,7 +5,7 @@
 
 SoftwareSerial bluetooth(RX, TX);
 HBridgeMotor bridge1(H1_PIN1A, H1_PIN2A, H1_PIN1B, H1_PIN2B);
-HBridgeMotor bridge2(H2_PIN1A, H2_PIN2A);
+HBridgeMotor bridge2(0, 0, H2_PIN1A, H2_PIN2A);
 ArdCar car;
 
 void setup() {
@@ -20,6 +20,7 @@ void setup() {
 void loop() {
   if(bluetooth.available()){
     char bCommand = bluetooth.read();
+    Serial.println(bCommand);
     ArdCar::controllerForward(&bCommand, &bluetooth);
     ArdCar::controllerBackward(&bCommand, &bluetooth);
     ArdCar::controllerStop(&bCommand, &bluetooth);
