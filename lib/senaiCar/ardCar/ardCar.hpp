@@ -14,6 +14,7 @@ class ArdCar : public Car{
     static void controllerBackward(char* command, SoftwareSerial* response);
     static void controllerTurnRight(char* command, SoftwareSerial* response);
     static void controllerTurnLeft(char* command, SoftwareSerial* response);
+    static void controllerStopDirection(char* command, SoftwareSerial* response);
     static void controllerStop(char* command, SoftwareSerial* response);
     static void controllerServAxisY(char* command, SoftwareSerial* response);
     static void controllerServAxisX(char* command, SoftwareSerial* response);
