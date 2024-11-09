@@ -24,3 +24,33 @@ float Car::getBattery(){
     this->battery = (float) 12 * valueOfBytes / 1024;
     return this->battery;
 }
+
+void Car::controlBatteryLeds(){
+    float batteryPercent = this->getBatteryToPercent();
+    if(batteryPercent > 50){
+        digitalWrite(this->leds.greenLed, HIGH);
+        digitalWrite(this->leds.yellowLed, LOW);
+        digitalWrite(this->leds.redLed, LOW);
+    }else if(battery > 25){
+        digitalWrite(this->leds.greenLed, LOW);
+        digitalWrite(this->leds.yellowLed, HIGH);
+        digitalWrite(this->leds.redLed, LOW);
+    }else{
+        digitalWrite(this->leds.greenLed, LOW);
+        digitalWrite(this->leds.yellowLed, LOW);
+        digitalWrite(this->leds.redLed, HIGH);
+    }
+}
+
+float Car::getBatteryToPercent(){
+    return (this->getBattery() * 100) / 12;
+}
+
+void Car::attachLeds(uint8_t redLed, uint8_t yellowLed, uint8_t greenLed){
+    this->leds.redLed = redLed;
+    this->leds.yellowLed = yellowLed;
+    this->leds.greenLed = greenLed;
+    pinMode(this->leds.redLed, OUTPUT);
+    pinMode(this->leds.yellowLed, OUTPUT);
+    pinMode(this->leds.greenLed, OUTPUT);
+}

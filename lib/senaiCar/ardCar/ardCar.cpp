@@ -1,7 +1,6 @@
 #include "./ardCar.hpp"
 
 ArdCar::ArdCar() : Car() {};
-ArdCar::ArdCar(uint8_t pin) : Car(pin) {};
 
 void ArdCar::controllerForward(char* command, SoftwareSerial* response){
     if(*command == 'f'){
@@ -49,17 +48,18 @@ void ArdCar::controllerTurnLeft(char* command, SoftwareSerial* response){
 
 void ArdCar::controllerStopDirection(char* command, SoftwareSerial* response){
     if(*command == 'd'){
-        bridge1.continuousSetMotorB(LOW, 0);
-        response->println("motors are off");
+        bridge1.continuousSetMotorB(LOW, 1);
+        bridge1.continuousSetMotorB(LOW, 2);
+        response->println("Direction is off");
     }
 }
 
 void ArdCar::controllerStop(char* command, SoftwareSerial* response){
     if(*command == 's'){
-        int dirMA = bridge1.continuousSetMotorA(LOW, 0);
-        int dirMB = bridge2.continuousSetMotorA(LOW, 0);
-
-        response->println("motor A is off, port: " + (String) dirMA);
-        response->println("motor B is off, port: " + (String) dirMB);
+        bridge1.continuousSetMotorA(LOW, 1);
+        bridge2.continuousSetMotorA(LOW, 1);
+        bridge1.continuousSetMotorB(LOW, 2);
+        bridge2.continuousSetMotorA(LOW, 2);
+        response->println("motors are off");
     }
 }

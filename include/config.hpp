@@ -18,7 +18,15 @@ const byte PIN_BATTERY = A0;
 const byte RX = 4;
 const byte TX = 2;
 
+//Pin leds 
+const uint8_t RED_LED = A1;
+const uint8_t YELLOW_LED = A2;
+const uint8_t GREEN_LED = A3;
+
+
 // Pin Servo 
-const byte PIN_SERVO = 12;
+const byte PIN_SERVO = 7;
 
-
+//Sensor ultrassonico
+const byte TRIGGER_PIN = 12;
+const byte ECHO_PIN = 13;
