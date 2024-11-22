@@ -31,11 +31,11 @@ void Car::controlBatteryLeds(){
         digitalWrite(this->leds.greenLed, HIGH);
         digitalWrite(this->leds.yellowLed, LOW);
         digitalWrite(this->leds.redLed, LOW);
-    }else if(battery > 25){
+    } else if(batteryPercent > 25){
         digitalWrite(this->leds.greenLed, LOW);
         digitalWrite(this->leds.yellowLed, HIGH);
         digitalWrite(this->leds.redLed, LOW);
-    }else{
+    } else {
         digitalWrite(this->leds.greenLed, LOW);
         digitalWrite(this->leds.yellowLed, LOW);
         digitalWrite(this->leds.redLed, HIGH);

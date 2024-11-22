@@ -63,3 +63,36 @@ void ArdCar::controllerStop(char* command, SoftwareSerial* response){
         response->println("motors are off");
     }
 }
+
+void ArdCar::rotationRight(char* command, SoftwareSerial* response){
+    if(*command == 'R'){
+        bridge1.continuousSetMotorA(HIGH, 1);
+        bridge1.continuousSetMotorB(HIGH, 1);
+        bridge2.continuousSetMotorA(HIGH, 2);
+
+        response->println("motors are on");
+    }
+}
+
+void ArdCar::rotationLeft(char* command, SoftwareSerial* response){
+    if(*command == 'L'){
+        bridge1.continuousSetMotorA(HIGH, 2);
+        bridge1.continuousSetMotorB(HIGH, 2);
+        bridge2.continuousSetMotorA(HIGH, 1);
+
+        response->println("motors are on");
+    }
+}
+
+void ArdCar::controllerServAxisY(char* command, SoftwareSerial* response){
+    if(*command == '-'){
+        int angle = servY.read();
+        servY.write(angle - 27);
+        
+    }
+
+    if(*command == '+'){
+        int angle = servY.read();
+        servY.write(angle + 27);
+    }
+}

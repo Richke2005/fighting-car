@@ -25,8 +25,4 @@ const uint8_t GREEN_LED = A3;
 
 
 // Pin Servo 
-const byte PIN_SERVO = 7;
-
-//Sensor ultrassonico
-const byte TRIGGER_PIN = 12;
-const byte ECHO_PIN = 13;
+const byte PIN_SERVO_Y = 7;

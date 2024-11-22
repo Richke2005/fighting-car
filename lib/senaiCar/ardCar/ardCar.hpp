@@ -5,6 +5,7 @@
 
 extern HBridgeMotor bridge1;
 extern HBridgeMotor bridge2;
+extern Servo servY;
 
 class ArdCar : public Car{
     public:
@@ -13,6 +14,8 @@ class ArdCar : public Car{
     void controllerBackward(char* command, SoftwareSerial* response);
     void controllerTurnRight(char* command, SoftwareSerial* response);
     void controllerTurnLeft(char* command, SoftwareSerial* response);
+    void rotationRight(char* command, SoftwareSerial* response);
+    void rotationLeft(char* command, SoftwareSerial* response);
     void controllerStopDirection(char* command, SoftwareSerial* response);
     void controllerStop(char* command, SoftwareSerial* response);
     void controllerServAxisY(char* command, SoftwareSerial* response);
