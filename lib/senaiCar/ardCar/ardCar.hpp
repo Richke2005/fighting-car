@@ -10,14 +10,20 @@ extern Servo servY;
 class ArdCar : public Car{
     public:
     ArdCar();
-    void controllerForward(char* command, SoftwareSerial* response);
-    void controllerBackward(char* command, SoftwareSerial* response);
-    void controllerTurnRight(char* command, SoftwareSerial* response);
-    void controllerTurnLeft(char* command, SoftwareSerial* response);
-    void rotationRight(char* command, SoftwareSerial* response);
-    void rotationLeft(char* command, SoftwareSerial* response);
-    void controllerStopDirection(char* command, SoftwareSerial* response);
-    void controllerStop(char* command, SoftwareSerial* response);
-    void controllerServAxisY(char* command, SoftwareSerial* response);
-    void controllerServAxisX(char* command, SoftwareSerial* response);
+    void refreshSpeed(const char * const command);
+    void controllerForward(const char * const command, SoftwareSerial* response);
+    void controllerBackward(const char * const command, SoftwareSerial* response);
+    void controllerTurnRight(const char * const command, SoftwareSerial* response);
+    void controllerTurnLeft(const char * const command, SoftwareSerial* response);
+    void rotationRight(const char * const command, SoftwareSerial* response);
+    void rotationLeft(const char * const command, SoftwareSerial* response);
+    void controllerStopDirection(const char * const command, SoftwareSerial* response);
+    void controllerStop(const char * const command, SoftwareSerial* response);
+    void controllerServAxisY(const char * const command, SoftwareSerial* response);
+    void controllerServAxisX(const char * const command, SoftwareSerial* response);
+
+    private:
+    int speedF = 0;
+    int speedL = 0;
+    int speedR = 0;
 };

@@ -171,15 +171,19 @@ int HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
         case 1:
             direction = motorA.direction1;
             contrary = motorA.direction2;
-            digitalWrite(direction, isOn);
-            digitalWrite(contrary, !isOn);
+            //digitalWrite(direction, isOn);
+            //digitalWrite(contrary, !isOn);
+            analogWrite(direction, isOn);
+            analogWrite(contrary, 0);
             break;
     
         case 2: 
             direction = motorA.direction2;
             contrary = motorA.direction1;
-            digitalWrite(direction, isOn);
-            digitalWrite(contrary, !isOn);
+            //digitalWrite(direction, isOn);
+            //digitalWrite(contrary, !isOn);
+            analogWrite(direction, isOn);
+            analogWrite(contrary, 0);
             break;
         default:
             direction = 0;
@@ -187,8 +191,10 @@ int HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
         }
         return direction;
     }else{
-        digitalWrite(direction, isOn);
-        digitalWrite(contrary, isOn);
+        //digitalWrite(direction, isOn);
+        //digitalWrite(contrary, isOn);
+        analogWrite(direction, 0);
+        analogWrite(contrary, 0);
         return 0;
     }
 }
@@ -202,15 +208,19 @@ int HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
         case 1:
             direction = motorB.direction1;
             contrary = motorB.direction2;
-            digitalWrite(direction, isOn);
-            digitalWrite(contrary, !isOn);
+            //digitalWrite(direction, isOn);
+            //digitalWrite(contrary, !isOn);
+            analogWrite(direction, isOn);
+            analogWrite(contrary, 0);
             break;
     
         case 2: 
             direction = motorB.direction2;
             contrary = motorB.direction1;
-            digitalWrite(direction, isOn);
-            digitalWrite(contrary, !isOn);
+            //digitalWrite(direction, isOn);
+            //digitalWrite(contrary, !isOn);
+            analogWrite(direction, isOn);
+            analogWrite(contrary, 0);
             break;
         default:
             direction = 0;
@@ -218,8 +228,10 @@ int HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
         }
         return direction;
     }else{
-        digitalWrite(direction, isOn);
-        digitalWrite(contrary, isOn);
-        return isOn;
+        //digitalWrite(direction, isOn);
+        //digitalWrite(contrary, isOn);
+        analogWrite(direction, 0);
+        analogWrite(contrary, 0);
+        return 0;
     }
 }

@@ -75,4 +75,6 @@ class HBridgeMotor{
     int continuousSetMotorA(uint8_t isOn, byte rotationDirection);
 
     int continuousSetMotorB(uint8_t isOn, byte rotationDirection);
+
+    void rampaDeAceleracao(uint8_t pin, int velocity);
 };

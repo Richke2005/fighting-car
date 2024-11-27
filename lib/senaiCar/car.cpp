@@ -27,11 +27,11 @@ float Car::getBattery(){
 
 void Car::controlBatteryLeds(){
     float batteryPercent = this->getBatteryToPercent();
-    if(batteryPercent > 50){
+    if(batteryPercent > 50 && batteryPercent != -1){
         digitalWrite(this->leds.greenLed, HIGH);
         digitalWrite(this->leds.yellowLed, LOW);
         digitalWrite(this->leds.redLed, LOW);
-    } else if(batteryPercent > 25){
+    } else if(batteryPercent > 25 && batteryPercent != -1){
         digitalWrite(this->leds.greenLed, LOW);
         digitalWrite(this->leds.yellowLed, HIGH);
         digitalWrite(this->leds.redLed, LOW);
