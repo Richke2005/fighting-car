@@ -1,29 +1,98 @@
 #pragma once
 #include "../car.hpp"
 #include <SoftwareSerial.h>
-#include <Servo.h>
+#include <SoftwareServo.h>
+/**
+ * @file ardCar.hpp
+ * @brief Header file for the ArdCar class, which extends the Car class and provides methods for controlling a car using H-Bridge motors and servos.
+ */
 
 extern HBridgeMotor bridge1;
 extern HBridgeMotor bridge2;
-extern Servo servY;
+extern SoftwareServo servY;
+
 
 class ArdCar : public Car{
+    uint8_t speedF = 0;
+    uint8_t speedL = 0;
+    uint8_t speedR = 0;
+    unsigned long lastUpdate = 0;
+    /**
+    * @class ArdCar
+    * @brief A class to control a car with H-Bridge motors and servos.
+    */
     public:
-    ArdCar();
-    void refreshSpeed(const char * const command);
-    void controllerForward(const char * const command, SoftwareSerial* response);
-    void controllerBackward(const char * const command, SoftwareSerial* response);
-    void controllerTurnRight(const char * const command, SoftwareSerial* response);
-    void controllerTurnLeft(const char * const command, SoftwareSerial* response);
-    void rotationRight(const char * const command, SoftwareSerial* response);
-    void rotationLeft(const char * const command, SoftwareSerial* response);
-    void controllerStopDirection(const char * const command, SoftwareSerial* response);
-    void controllerStop(const char * const command, SoftwareSerial* response);
-    void controllerServAxisY(const char * const command, SoftwareSerial* response);
-    void controllerServAxisX(const char * const command, SoftwareSerial* response);
 
-    private:
-    int speedF = 0;
-    int speedL = 0;
-    int speedR = 0;
+    ArdCar();
+    /**
+    * @brief Constructor for the ArdCar class.
+    */
+    void refreshSpeed(const char * const command);
+        /**
+    * @brief Refreshes the speed of the car based on the given command.
+    * @param command A constant character pointer to the command string.
+    */
+    void controllerForward(char command, SoftwareSerial* response);
+     
+ /**
+    * @brief Controls the car to move forward based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
+    void controllerBackward(char command, SoftwareSerial* response);
+     /**
+    * @brief Controls the car to move backward based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
+    void controllerTurnRight(char command, SoftwareSerial* response);
+     
+ /**
+    * @brief Controls the car to turn right based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
+    void controllerTurnLeft(char command, SoftwareSerial* response);
+     /**
+    * @brief Controls the car to turn left based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
+    void rotationRight(char command, SoftwareSerial* response);
+    /**
+    * @brief Controls the car to rotate right based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
+    void rotationLeft(char command, SoftwareSerial* response);
+     /**
+    * @brief Controls the car to rotate left based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
+    void controllerStopDirection(char command, SoftwareSerial* response);
+     /**
+    * @brief Stops the car's current direction based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
+ 
+    void controllerStop(char command, SoftwareSerial* response);
+    /**
+    * @brief Stops the car based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
+    void controllerServAxisY(char command, SoftwareSerial* response);
+     /**
+    * @brief Controls the Y-axis of the servo based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
+    void controllerServAxisX(char command, SoftwareSerial* response);
+     /**
+    * @brief Controls the X-axis of the servo based on the given command.
+    * @param command A character representing the command.
+    * @param response A pointer to a SoftwareSerial object for sending responses.
+    */
 };

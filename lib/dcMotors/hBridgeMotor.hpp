@@ -2,12 +2,14 @@
 #include <Arduino.h>
 
 struct pinMotors{
-	byte direction1;
-  byte direction2;
+	uint8_t direction1;
+  uint8_t direction2;
+  uint8_t PWM = 0;
+  void accelerationRamp(uint8_t direction, uint8_t velocity);
 };
 
 class HBridgeMotor{
-	  pinMotors motorA;
+    pinMotors motorA;
   	pinMotors motorB;
 
     public:
@@ -73,8 +75,5 @@ class HBridgeMotor{
     int setMotorB(int velocity, byte rotationDirection, byte pinPWM);
 
     int continuousSetMotorA(uint8_t isOn, byte rotationDirection);
-
     int continuousSetMotorB(uint8_t isOn, byte rotationDirection);
-
-    void rampaDeAceleracao(uint8_t pin, int velocity);
 };

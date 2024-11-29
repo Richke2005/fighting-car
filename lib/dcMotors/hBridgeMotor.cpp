@@ -161,7 +161,6 @@ int HBridgeMotor::setMotorB(int velocity, byte rotationDirection, byte pinPWM){
 }
 
 
-
 int HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
     byte direction = motorA.direction1;
     byte contrary = motorA.direction2;
@@ -171,32 +170,21 @@ int HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
         case 1:
             direction = motorA.direction1;
             contrary = motorA.direction2;
-            //digitalWrite(direction, isOn);
-            //digitalWrite(contrary, !isOn);
-            analogWrite(direction, isOn);
-            analogWrite(contrary, 0);
             break;
-    
         case 2: 
             direction = motorA.direction2;
             contrary = motorA.direction1;
-            //digitalWrite(direction, isOn);
-            //digitalWrite(contrary, !isOn);
-            analogWrite(direction, isOn);
-            analogWrite(contrary, 0);
             break;
         default:
             direction = 0;
+            contrary = 0;
             break;
         }
-        return direction;
-    }else{
-        //digitalWrite(direction, isOn);
-        //digitalWrite(contrary, isOn);
-        analogWrite(direction, 0);
-        analogWrite(contrary, 0);
-        return 0;
     }
+    analogWrite(contrary, 0);
+    analogWrite(direction, isOn);
+    
+    return direction;
 }
 
 int HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
@@ -206,32 +194,40 @@ int HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
         switch (rotationDirection)
         {
         case 1:
-            direction = motorB.direction1;
-            contrary = motorB.direction2;
-            //digitalWrite(direction, isOn);
-            //digitalWrite(contrary, !isOn);
-            analogWrite(direction, isOn);
-            analogWrite(contrary, 0);
+            direction = motorA.direction1;
+            contrary = motorA.direction2;
             break;
-    
         case 2: 
-            direction = motorB.direction2;
-            contrary = motorB.direction1;
-            //digitalWrite(direction, isOn);
-            //digitalWrite(contrary, !isOn);
-            analogWrite(direction, isOn);
-            analogWrite(contrary, 0);
+            direction = motorA.direction2;
+            contrary = motorA.direction1;
             break;
         default:
             direction = 0;
+            contrary = 0;
             break;
         }
-        return direction;
-    }else{
-        //digitalWrite(direction, isOn);
-        //digitalWrite(contrary, isOn);
-        analogWrite(direction, 0);
-        analogWrite(contrary, 0);
-        return 0;
+    }
+    analogWrite(contrary, 0);
+    analogWrite(direction, isOn);
+    return direction;
+}
+
+void pinMotors::accelerationRamp(uint8_t direction, uint8_t velocity) {
+    static unsigned long lastUpdate = 0; // Tempo da última atualização
+    // Determina a direção da rampa
+    if (velocity == 0) {
+        this->PWM = 0;
+        analogWrite(direction, this->PWM);
+    } else if (this->PWM == 0) {
+        this->PWM = 128; // Inicia a rampa de aceleração
+    }
+
+    // Verifica se passou o intervalo de tempo (5ms)
+    if (millis() - lastUpdate >= 5 && this->PWM != 0) {
+        lastUpdate = millis(); // Atualiza o tempo da última execução
+        // Atualiza o valor de PWM gradualmente até o valor desejado
+        this->PWM = constrain(this->PWM + 1, 0, velocity);
+        analogWrite(direction, this->PWM);
+        Serial.println(this->PWM);
     }
 }
