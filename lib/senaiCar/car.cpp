@@ -3,7 +3,7 @@
 Car::Car() : pinBattery(-1), battery(0.0), velocity(0.0), objectRadar(0.0) {}
 
 Car::Car(uint8_t pin){
-    if(pin < 0 || pin > 13) 
+    if(pin < 0 || pin > 13)
         Serial.println("Invalid pin for battery: " + (String) pin);
         
     this->pinBattery = pin;

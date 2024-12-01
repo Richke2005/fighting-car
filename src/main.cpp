@@ -12,7 +12,6 @@ SoftwareServo servY;
 ArdCar car;
 char bCommand = 0;
 
-
 void setup() {
   // put your setup code here, to run once:
   bridge1.initialize();
@@ -29,13 +28,12 @@ void loop() {
     bCommand = bluetooth.read();
   }
   car.controlBatteryLeds();
-  car.controllerForward(bCommand, &bluetooth);
-  car.controllerBackward(bCommand, &bluetooth);
-  car.controllerStop(bCommand, &bluetooth);
-  car.controllerTurnRight(bCommand, &bluetooth);
-  car.controllerTurnLeft(bCommand, &bluetooth);
-  car.controllerStopDirection(bCommand, &bluetooth);
-  car.rotationRight(bCommand, &bluetooth);
-  car.rotationLeft(bCommand, &bluetooth);
-  servY.write(90);
+  car.controllerForward(bCommand);
+  car.controllerBackward(bCommand);
+  car.controllerStop(bCommand);
+  car.controllerTurnRight(bCommand);
+  car.controllerTurnLeft(bCommand);
+  car.controllerStopDirection(bCommand);
+  car.controllerRotationRight(bCommand);
+  car.controllerRotationLeft(bCommand);
 }

@@ -180,11 +180,14 @@ int HBridgeMotor::continuousSetMotorA(uint8_t isOn, byte rotationDirection){
             contrary = 0;
             break;
         }
+        
+        analogWrite(contrary, 0);
+        analogWrite(direction, isOn);
+    }else{
+        analogWrite(direction, 0);
+        analogWrite(contrary, 0);
     }
-    analogWrite(contrary, 0);
-    analogWrite(direction, isOn);
-    
-    return direction;
+    return rotationDirection;
 }
 
 int HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
@@ -194,22 +197,26 @@ int HBridgeMotor::continuousSetMotorB(uint8_t isOn, byte rotationDirection){
         switch (rotationDirection)
         {
         case 1:
-            direction = motorA.direction1;
-            contrary = motorA.direction2;
+            direction = motorB.direction1;
+            contrary = motorB.direction2;
             break;
         case 2: 
-            direction = motorA.direction2;
-            contrary = motorA.direction1;
+            direction = motorB.direction2;
+            contrary = motorB.direction1;
             break;
         default:
             direction = 0;
             contrary = 0;
             break;
         }
+        
+        analogWrite(contrary, 0);
+        analogWrite(direction, isOn);
+    }else{
+        analogWrite(direction, 0);
+        analogWrite(contrary, 0);
     }
-    analogWrite(contrary, 0);
-    analogWrite(direction, isOn);
-    return direction;
+    return rotationDirection;
 }
 
 void pinMotors::accelerationRamp(uint8_t direction, uint8_t velocity) {

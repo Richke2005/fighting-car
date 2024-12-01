@@ -9,7 +9,6 @@ struct batteryLeds{
     uint8_t redLed;
 };
 
-
 class Car {
     protected: 
     uint8_t pinBattery;

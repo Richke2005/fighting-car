@@ -2,153 +2,132 @@
 
 ArdCar::ArdCar() : Car() {};
 
-void ArdCar::controllerForward(char command, SoftwareSerial* response) {
-    if (command == 'f') {
+void ArdCar::controllerForward(char command) {
+    if (command != 'f') return; // Retorna imediatamente se o comando não for 'f'
+
+    // Inicializa a velocidade se ainda não foi configurada
+    if (this->speedF == 0) {
         this->speedF = 128;
     }
-    // Verifica se é hora de atualizar a velocidade
+
+    // Atualiza a velocidade periodicamente
     if (millis() - this->lastUpdate >= 5) {
         this->lastUpdate = millis();
-        if (this->speedF != 0) {
-            this->speedF = constrain(this->speedF + 1, 0, 255);
-            Serial.println(this->speedF);
-            bridge1.continuousSetMotorA(this->speedF, 1);
-            bridge2.continuousSetMotorA(this->speedF, 1);
-        }
+        this->speedF = constrain(this->speedF + 1, 0, 255);
+       
+        bridge1.continuousSetMotorA(this->speedF, 1);
+        bridge2.continuousSetMotorA(this->speedF, 1);
     }
 }
 
 
-void ArdCar::controllerBackward(char command, SoftwareSerial* response){
-    if (command == 'b') {
+
+void ArdCar::controllerBackward(char command){
+    if (command != 'b') return; // Retorna imediatamente se o comando não for 'f'
+
+    // Inicializa a velocidade se ainda não foi configurada
+    if (this->speedF == 0) {
         this->speedF = 128;
     }
-    // Verifica se é hora de atualizar a velocidade
+
+    // Atualiza a velocidade periodicamente
     if (millis() - this->lastUpdate >= 5) {
         this->lastUpdate = millis();
-        if (this->speedF != 0) {
-            this->speedF = constrain(this->speedF + 1, 0, 255);
-            Serial.println(this->speedF);
-            bridge1.continuousSetMotorA(this->speedF, 2);
-            bridge2.continuousSetMotorA(this->speedF, 2);
-        }
+        this->speedF = constrain(this->speedF + 1, 0, 255);
+      
+        bridge1.continuousSetMotorA(this->speedF, 2);
+        bridge2.continuousSetMotorA(this->speedF, 2);
     }
 }
 
-void ArdCar::controllerTurnRight(char command, SoftwareSerial* response){
-    if (command == 'r') {
+void ArdCar::controllerTurnRight(char command){
+    if (command != 'r') return; // Retorna imediatamente se o comando não for 'f'
+
+    // Inicializa a velocidade se ainda não foi configurada
+    if (this->speedR == 0) {
         this->speedR = 128;
     }
-    // Verifica se é hora de atualizar a velocidade
+
+    // Atualiza a velocidade periodicamente
     if (millis() - this->lastUpdate >= 5) {
         this->lastUpdate = millis();
-        if (this->speedR != 0) {
-            this->speedR = constrain(this->speedR + 1, 0, 255);
-            Serial.println(this->speedR);
-            bridge1.continuousSetMotorB(this->speedR, 1);
-        }
+        this->speedR = constrain(this->speedR + 1, 0, 255);
+      
+        bridge1.continuousSetMotorB(this->speedR, 1);
     }
 }
 
-void ArdCar::controllerTurnLeft(char command, SoftwareSerial* response){
-    if (command == 'l') {
+void ArdCar::controllerTurnLeft(char command){
+    if (command != 'l') return; // Retorna imediatamente se o comando não for 'f'
+
+    // Inicializa a velocidade se ainda não foi configurada
+    if (this->speedL == 0) {
         this->speedL = 128;
     }
-    // Verifica se é hora de atualizar a velocidade
+
+    // Atualiza a velocidade periodicamente
     if (millis() - this->lastUpdate >= 5) {
         this->lastUpdate = millis();
-        if (this->speedL != 0) {
-            this->speedL = constrain(this->speedL + 1, 0, 255);
-            Serial.println(this->speedL);
-            bridge1.continuousSetMotorB(this->speedL, 1);
-        }
+        this->speedL = constrain(this->speedL + 1, 0, 255);
+        
+        bridge1.continuousSetMotorB(this->speedL, 2);
     }
 }
 
-void ArdCar::controllerStopDirection(char command, SoftwareSerial* response){
-    if(command == 'd'){
-        this->speedR = 0;
-        this->speedL = 0;
-        bridge1.continuousSetMotorB(speedR, 1);
-        bridge1.continuousSetMotorB(speedL, 2);
-    }
+void ArdCar::controllerStopDirection(char command) {
+    if (command != 'd') return; // Retorna imediatamente se o comando não for 'd'
+
+    this->speedR = this->speedL = 0; // Reseta ambas as velocidades
+    bridge1.continuousSetMotorB(0, 1);
+    bridge1.continuousSetMotorB(0, 2);
 }
 
-void ArdCar::controllerStop(char command, SoftwareSerial* response){
-    if(command == 's'){
-        this->speedF = 0;
-        bridge1.continuousSetMotorA(speedF, 1);
-        bridge2.continuousSetMotorA(speedF, 1);
-    }
+void ArdCar::controllerStop(char command){
+    if(command != 's') return;
+    this->speedF = 0;
+    bridge1.continuousSetMotorA(0, 1);
+    bridge2.continuousSetMotorA(0, 1);
 }
 
-void ArdCar::rotationRight(char command, SoftwareSerial* response){
-    if (command == 'R') {
+void ArdCar::controllerRotationRight(char command){
+    if (command != 'R') return;
+
+        // Inicializa a velocidade se ainda não foi configurada
+    if (this->speedF == 0) {
         this->speedF = 128;
     }
-    // Verifica se é hora de atualizar a velocidade
+
+    // Atualiza a velocidade periodicamente
     if (millis() - this->lastUpdate >= 5) {
         this->lastUpdate = millis();
-        if (this->speedF != 0) {
-            this->speedF = constrain(this->speedF + 1, 0, 255);
-            Serial.println(this->speedF);
-            bridge1.continuousSetMotorA(this->speedF, 1);
-            bridge1.continuousSetMotorB(this->speedF, 1);
-            bridge2.continuousSetMotorA(this->speedF, 2);
-        }
+        this->speedF = constrain(this->speedF + 1, 0, 255);
+       
+        bridge1.continuousSetMotorA(this->speedF, 1);
+        bridge1.continuousSetMotorB(this->speedF, 1);
+        bridge2.continuousSetMotorA(this->speedF, 2);
     }
 }
 
-void ArdCar::rotationLeft(char command, SoftwareSerial* response){
-    if (command == 'L') {
+void ArdCar::controllerRotationLeft(char command){
+    if (command != 'L') return;
+
+        // Inicializa a velocidade se ainda não foi configurada
+    if (this->speedF == 0) {
         this->speedF = 128;
     }
-    // Verifica se é hora de atualizar a velocidade
+
+    // Atualiza a velocidade periodicamente
     if (millis() - this->lastUpdate >= 5) {
         this->lastUpdate = millis();
-        if (this->speedF != 0) {
-            this->speedF = constrain(this->speedF + 1, 0, 255);
-            Serial.println(this->speedF);
-            bridge1.continuousSetMotorA(this->speedF, 2);
-            bridge1.continuousSetMotorB(this->speedF, 2);
-            bridge2.continuousSetMotorA(this->speedF, 1);
-        }
+        this->speedF = constrain(this->speedF + 1, 0, 255);
+        
+        bridge1.continuousSetMotorA(this->speedF, 2);
+        bridge1.continuousSetMotorB(this->speedF, 2);
+        bridge2.continuousSetMotorA(this->speedF, 1);
     }
 }
 
-void ArdCar::refreshSpeed (const char * const command){
-    if (*command == 'f' || *command == 'b' || *command == 'R' || *command == 'L'){
-        if (speedL == 0)
-            speedL = 128;
-        else
-            speedL = constrain(speedL + 1, 0, 255);
-
-        if (speedR == 0)
-            speedR  = 128;
-        else
-            speedR = constrain(speedR + 1, 0, 255);
-    }
-    
-    if (*command == 'r' || *command == 'l' || *command == 'R' || *command == 'L'){
-        if (speedF == 0)
-            speedF  = 128;
-        else
-            speedF = constrain(speedF + 1, 0, 255);
-    }
-    
-    if (*command == 'd'){
-        speedF = 0;
-    }
-    
-    if (*command == 's'){
-        speedR = 0;
-        speedL = 0;
-    }
-
-    Serial.println(speedR);
-}
-
-void ArdCar::controllerServAxisY(char command, SoftwareSerial* response){
+void ArdCar::controllerServAxisY(char command){
     if(command == '-'){
         int angle = servY.read();
         servY.write(angle - 27);
