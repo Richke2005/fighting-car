@@ -13,9 +13,7 @@ class Car {
     protected: 
     uint8_t pinBattery;
     float battery;
-    float velocity;
     bool connectionStatus;
-    float objectRadar;
     batteryLeds leds;
     
     public:
@@ -67,10 +65,4 @@ class Car {
      * @return The current battery level as an unsigned integer percentage.
      */
     unsigned int getBatteryToPercent();
-
-    /**
-     * @brief Get the current velocity of the car.
-     * @return The current velocity as an integer.
-     */
-    int getVelocity();
 };

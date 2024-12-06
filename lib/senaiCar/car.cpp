@@ -1,6 +1,6 @@
 #include "./car.hpp"
 
-Car::Car() : pinBattery(-1), battery(0.0), velocity(0.0), objectRadar(0.0) {}
+Car::Car() : pinBattery(-1), battery(0.0){}
 
 Car::Car(uint8_t pin){
     if(pin < 0 || pin > 13)

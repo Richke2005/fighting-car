@@ -1,7 +1,7 @@
 #pragma once
 #include "../car.hpp"
-#include <SoftwareSerial.h>
-#include <SoftwareServo.h>
+#include <SoftServo.h>
+
 /**
  * @file ardCar.hpp
  * @brief Header file for the ArdCar class, which extends the Car class and provides methods for controlling a car using H-Bridge motors and servos.
@@ -9,20 +9,20 @@
 
 extern HBridgeMotor bridge1;
 extern HBridgeMotor bridge2;
-extern SoftwareServo servY;
+extern SoftServo servY;
 
 
 class ArdCar : public Car{
     uint8_t speedF = 0;
     uint8_t speedL = 0;
     uint8_t speedR = 0;
+    char servMode = 0;
     unsigned long lastUpdate = 0;
     /**
     * @class ArdCar
     * @brief A class to control a car with H-Bridge motors and servos.
     */
     public:
-
     ArdCar();
     /**
     * @brief Constructor for the ArdCar class.
@@ -90,4 +90,5 @@ class ArdCar : public Car{
     * @param command A character representing the command.
     * @param response A pointer to a SoftwareSerial object for sending responses.
     */
+   void controllerServAttack(char command);
 };

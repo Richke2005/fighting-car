@@ -52,7 +52,8 @@ void ArdCar::controllerTurnRight(char command){
     if (millis() - this->lastUpdate >= 5) {
         this->lastUpdate = millis();
         this->speedR = constrain(this->speedR + 1, 0, 255);
-      
+
+        bridge1.continuousSetMotorA(this->speedR, 1);
         bridge1.continuousSetMotorB(this->speedR, 1);
     }
 }
@@ -71,6 +72,7 @@ void ArdCar::controllerTurnLeft(char command){
         this->speedL = constrain(this->speedL + 1, 0, 255);
         
         bridge1.continuousSetMotorB(this->speedL, 2);
+        bridge2.continuousSetMotorA(this->speedL, 1);
     }
 }
 
@@ -78,6 +80,8 @@ void ArdCar::controllerStopDirection(char command) {
     if (command != 'd') return; // Retorna imediatamente se o comando não for 'd'
 
     this->speedR = this->speedL = 0; // Reseta ambas as velocidades
+    bridge1.continuousSetMotorA(0, 1);
+    bridge2.continuousSetMotorA(0, 1);
     bridge1.continuousSetMotorB(0, 1);
     bridge1.continuousSetMotorB(0, 2);
 }
@@ -127,14 +131,50 @@ void ArdCar::controllerRotationLeft(char command){
     }
 }
 
-void ArdCar::controllerServAxisY(char command){
-    if(command == '-'){
-        int angle = servY.read();
-        servY.write(angle - 27);
+void ArdCar::controllerServAxisY(char command) {
+    if (command != '+' && command != '-' && command != 'x') return; // Retorna imediatamente se o comando não for '+' ou '-'
+    int angle = servY.read();
+    
+    if (command == '+') {
+        if(millis() - lastUpdate >= 50){
+            lastUpdate = millis();
+            angle = constrain(angle + 10, 0, 180);
+            servY.write(angle);
+        }
     }
 
-    if(command == '+'){
-        int angle = servY.read();
-        servY.write(angle + 27);
+    if (command == '-') {
+        if(millis() - lastUpdate >= 50){
+            lastUpdate = millis();
+            angle = constrain(angle + -10, 0, 180);
+            servY.write(angle);
+        }
+    }
+
+    if (command == 'x') {
+        if(millis() - lastUpdate >= 50){
+            lastUpdate = millis();
+            servY.write(angle);
+        }
+    }
+}
+
+void ArdCar::controllerServAttack(char command) {
+    if (command != '1' && command != '2' && command != 'x') return; // Retorna imediatamente se o comando não for 'a' ou 'd'
+    servMode = command;
+
+    if (command == '1') {
+        if(millis() - lastUpdate >= 100){
+            lastUpdate = millis();
+            servY.write(0);
+        }
+        if(millis() - lastUpdate >= 100){
+            lastUpdate = millis();
+            servY.write(90);
+        }
+        if(millis() - lastUpdate >= 100){
+            lastUpdate = millis();
+            servY.write(180);
+        }
     }
 }
