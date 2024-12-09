@@ -6,7 +6,6 @@ Rápida descrição do objetivo de fazer esse projeto
 | -------------  | --- |
 | :sparkles: Nome        | **Arduino Finghting car**
 | :label: Tecnologias | Arduino, C++
-| :rocket: URL         | https://url-deploy.com.br
 | :fire: Desafio     | TCC Senai Mecatrônica
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
