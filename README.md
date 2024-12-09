@@ -36,9 +36,11 @@ O carro é composto por uma estrutura robusta que suporta os componentes eletrô
 
 - Placa Arduino Uno
 - Módulo Bluetooth HC-05
+- Servo Motor MG996R
 - Motores DC com driver L298N
 - LEDs e resistores
 - 4 Pilhas 3800mha
+
 
 ### Esquema Elétrico
 
