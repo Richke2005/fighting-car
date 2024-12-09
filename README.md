@@ -10,7 +10,7 @@ Rápida descrição do objetivo de fazer esse projeto
 | :fire: Desafio     | https://url-do-desafio.com.br
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
-![](https://photos.google.com/u/1/photo/AF1QipNA6oLyONCdT1jrcMrG7xxJa9tXY-QqK2N0bAyt#vitrinedev)
+![](https://photos.google.com/u/1/share/AF1QipP5nADmRe01wIJV1brVzHCCdSivhsXD1wgSUIQ3F8klx28kXF6fqCgQc0-tbVCexg/photo/AF1QipPn-A7PaOWjgW8p1ZV-_q_Hr1g6CYn730WchvJS?key=bmttaVJUdmdRSjVJdEl1dEw2YzRsYXp6SVQwUXZn#vitrinedev)
 
 ## Detalhes do projeto
 
