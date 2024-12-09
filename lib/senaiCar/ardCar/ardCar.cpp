@@ -136,17 +136,17 @@ void ArdCar::controllerServAxisY(char command) {
     int angle = servY.read();
     
     if (command == '+') {
-        if(millis() - lastUpdate >= 50){
+        if(millis() - lastUpdate >= 100){
             lastUpdate = millis();
-            angle = constrain(angle + 10, 0, 180);
+            angle = constrain(angle + 10, 60, 180);
             servY.write(angle);
         }
     }
 
     if (command == '-') {
-        if(millis() - lastUpdate >= 50){
+        if(millis() - lastUpdate >= 100){
             lastUpdate = millis();
-            angle = constrain(angle + -10, 0, 180);
+            angle = constrain(angle -10, 60, 180);
             servY.write(angle);
         }
     }
@@ -162,17 +162,16 @@ void ArdCar::controllerServAxisY(char command) {
 void ArdCar::controllerServAttack(char command) {
     if (command != '1' && command != '2' && command != 'x') return; // Retorna imediatamente se o comando não for 'a' ou 'd'
     servMode = command;
+    long passedTime = millis() - lastUpdate;
 
     if (command == '1') {
-        if(millis() - lastUpdate >= 100){
-            lastUpdate = millis();
-            servY.write(0);
+        if(passedTime >= 1000 && passedTime < 2000){
+            servY.write(60);
         }
-        if(millis() - lastUpdate >= 100){
-            lastUpdate = millis();
+        if(passedTime >= 2000 && passedTime < 3000){
             servY.write(90);
         }
-        if(millis() - lastUpdate >= 100){
+        if(passedTime >= 3000){
             lastUpdate = millis();
             servY.write(180);
         }

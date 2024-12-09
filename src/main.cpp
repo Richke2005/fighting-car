@@ -19,6 +19,7 @@ void setup() {
   car.attachLeds(RED_LED, YELLOW_LED, GREEN_LED);
   servY.attach(PIN_SERVO_Y);
   servY.delayMode();
+  servY.write(60);
   Serial.begin(9600);
   bluetooth.begin(9600);
 }
@@ -38,5 +39,5 @@ void loop() {
   car.controllerRotationRight(bCommand);
   car.controllerRotationLeft(bCommand); 
   car.controllerServAxisY(bCommand);
-  //car.controllerServAttack(bCommand);
+  // car.controllerServAttack(bCommand);
 }
