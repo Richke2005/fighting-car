@@ -10,7 +10,7 @@ Rápida descrição do objetivo de fazer esse projeto
 | :fire: Desafio     | https://url-do-desafio.com.br
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
-![](https://photos.google.com/u/1/share/AF1QipP5nADmRe01wIJV1brVzHCCdSivhsXD1wgSUIQ3F8klx28kXF6fqCgQc0-tbVCexg/photo/AF1QipPn-A7PaOWjgW8p1ZV-_q_Hr1g6CYn730WchvJS?key=bmttaVJUdmdRSjVJdEl1dEw2YzRsYXp6SVQwUXZn#vitrinedev)
+![](https://lh3.googleusercontent.com/pw/AP1GczMlGco0VUG7ojkVZcNI1-_jYrxEjoR7Wnh_7M-oiOK86XqVYQ_6KcOWaenyofH_QygA5s9sT1F9eUKa_OC5nwW7glzz8sPJfb-gpHm55YiaaaO8VRqE3bb7LIlTHCCVUE_6fAKlW1e6QEPy_ArTsWNi0w=w820-h615-s-no-gm?authuser=1#vitrinedev)
 
 ## Detalhes do projeto
 
@@ -42,7 +42,7 @@ Rápida descrição do objetivo de fazer esse projeto
 
 ### Esquema Elétrico
 
-![Esquema Elétrico](https://photos.google.com/u/1/share/AF1QipP5nADmRe01wIJV1brVzHCCdSivhsXD1wgSUIQ3F8klx28kXF6fqCgQc0-tbVCexg/photo/AF1QipNfC5mb7-dTTyX-5IvduggwXDOLAlsCWx9lHX7c?key=bmttaVJUdmdRSjVJdEl1dEw2YzRsYXp6SVQwUXZn)
+![Esquema Elétrico](https://lh3.googleusercontent.com/pw/AP1GczPKC67CKtcnqTT6Vrr6oimOBmIKRTD7ApGuUpwN-CWcig-vkCzVYAvB_I6UVzY7bkV1gqRUFm93LY3AtmgLoUjilApclkLbD4_YR8bEMzdPgMMlShBUgNorK5x912uJKquI2yTQKmTEyrhl0DtUrl8MfQ=w665-h477-s-no-gm?authuser=1)
 
 ### Próximos Passos
 
