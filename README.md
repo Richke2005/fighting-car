@@ -40,6 +40,10 @@ O carro é composto por uma estrutura robusta que suporta os componentes eletrô
 - LEDs e resistores
 - 4 Pilhas 3800mha
 
+### Esquema Elétrico
+
+![Esquema Elétrico](https://lh3.googleusercontent.com/pw/AP1GczPKC67CKtcnqTT6Vrr6oimOBmIKRTD7ApGuUpwN-CWcig-vkCzVYAvB_I6UVzY7bkV1gqRUFm93LY3AtmgLoUjilApclkLbD4_YR8bEMzdPgMMlShBUgNorK5x912uJKquI2yTQKmTEyrhl0DtUrl8MfQ=w665-h477-s-no-gm?authuser=1)
+
 ### Sistema de Controle
 
 O controle do carro é realizado via Bluetooth, utilizando um aplicativo móvel que envia comandos para o módulo Bluetooth HC-05 conectado ao Arduino. O Arduino interpreta esses comandos e aciona os motores e outros componentes do carro.
@@ -68,10 +72,6 @@ Ao final do projeto, espera-se obter um carro de combate totalmente funcional, c
 3. Conecte os componentes conforme o esquema elétrico.
 4. Carregue o código na placa Arduino.
 5. Utilize um aplicativo de controle Bluetooth para controlar o carro.
-
-### Esquema Elétrico
-
-![Esquema Elétrico](https://lh3.googleusercontent.com/pw/AP1GczPKC67CKtcnqTT6Vrr6oimOBmIKRTD7ApGuUpwN-CWcig-vkCzVYAvB_I6UVzY7bkV1gqRUFm93LY3AtmgLoUjilApclkLbD4_YR8bEMzdPgMMlShBUgNorK5x912uJKquI2yTQKmTEyrhl0DtUrl8MfQ=w665-h477-s-no-gm?authuser=1)
 
 ### Próximos Passos
 
