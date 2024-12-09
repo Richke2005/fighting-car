@@ -42,7 +42,7 @@ Rápida descrição do objetivo de fazer esse projeto
 
 ### Esquema Elétrico
 
-<!--![Esquema Elétrico](https://via.placeholder.com/800x400.png?text=Esquema+Elétrico)-->
+![Esquema Elétrico](https://photos.google.com/u/1/share/AF1QipP5nADmRe01wIJV1brVzHCCdSivhsXD1wgSUIQ3F8klx28kXF6fqCgQc0-tbVCexg/photo/AF1QipNfC5mb7-dTTyX-5IvduggwXDOLAlsCWx9lHX7c?key=bmttaVJUdmdRSjVJdEl1dEw2YzRsYXp6SVQwUXZn)
 
 ### Próximos Passos
 
