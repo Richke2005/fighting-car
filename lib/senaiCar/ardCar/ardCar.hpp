@@ -90,5 +90,11 @@ class ArdCar : public Car{
     * @param command A character representing the command.
     * @param response A pointer to a SoftwareSerial object for sending responses.
     */
+
    void controllerServAttack(char command);
+   /**
+    * @brief Controls the servo motor for attack actions based on the given command.
+    * 
+    * @param command A character representing the specific attack command to execute.
+    */
 };

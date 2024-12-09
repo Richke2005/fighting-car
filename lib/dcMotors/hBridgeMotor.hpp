@@ -8,72 +8,118 @@ struct pinMotors{
   void accelerationRamp(uint8_t direction, uint8_t velocity);
 };
 
+
 class HBridgeMotor{
-    pinMotors motorA;
-  	pinMotors motorB;
-
-    public:
-    HBridgeMotor();
-    /**
-    * @brief Constructs an HBridgeMotor object with four input pins for controlling two separate motors.
-    *
-    * @param[in] pin1A The first pin for controlling the direction of the first motor.
-    * @param[in] pin2A The second pin for controlling the direction of the first motor.
-    * @param[in] pin1B The first pin for controlling the direction of the second motor.
-    * @param[in] pin2B The second pin for controlling the direction of the second motor.
-    */
-    HBridgeMotor(byte pin1A, byte pin2A, byte pin1B, byte pin2B);
-
-    /**
-    * @brief Constructs an HBridgeMotor object with two input pins for controlling the direction of a single motor.
-    *
-    * This constructor initializes an HBridgeMotor object with two input pins for controlling the direction of a single motor.
-    * The two input pins are used to control the direction of the motor by setting the state of the pins high or low.
-    *
-    * @param[in] pin1A The first pin for controlling the direction of the motor.
-    * @param[in] pin2A The second pin for controlling the direction of the motor.
-    */
-    HBridgeMotor(byte pin1A, byte pin2A);
+  pinMotors motorA;
+  pinMotors motorB;
   
-    /**
-    * @brief Initializes the HBridgeMotor object by setting the input pins as output pins.
-    *
-    * This function initializes the HBridgeMotor object by setting the input pins for controlling the direction of the motors as output pins.
-    * This is a necessary step before the motors can be controlled.
-    *
-    * @param None
-    * @return None
-    */
-    void initialize();
+  public:
+  /**
+   * @class HBridgeMotor
+   * @brief A class to control an H-Bridge motor driver.
+   * 
+   * This class provides methods to control two motors (motorA and motorB) using an H-Bridge motor driver.
+   */
 
-    /**
-    * @brief Sets the state of the first motor.
-    *
-    * This function sets the state of the first motor based on the input parameters. The first parameter, 'isOn', determines whether the motor should be turned on or off. If 'isOn' is true, the motor will be turned on; if it is false, the motor will be turned off. The second parameter, 'rotationDirection', determines the direction of the motor's rotation. It can take the values 1 or 2, corresponding to the first and second direction pins of the motor, respectively.
-    *
-    * @param[in] isOn A boolean value indicating whether the motor should be turned on (true) or off (false).
-    * @param[in] rotationDirection An integer value representing the direction of the motor's rotation. It can take the values 1 or 2, corresponding to the first and second direction pins of the motor, respectively.
-    */
-    int setMotorA(bool isOn, byte rotationDirection);
+  /**
+   * @brief Default constructor for HBridgeMotor.
+   */
+  HBridgeMotor();
 
-    // @param[in] velocity velocity passado em porcentagem representa a velocidade do motor.
-    int setMotorA(int velocity, byte rotationDirection);
-    int setMotorA(int velocity, byte rotationDirection, byte pinPWM);
+  /**
+   * @brief Constructor for HBridgeMotor with specified pins for two motors.
+   * 
+   * @param pin1A Pin number for motor A input 1.
+   * @param pin2A Pin number for motor A input 2.
+   * @param pin1B Pin number for motor B input 1.
+   * @param pin2B Pin number for motor B input 2.
+   */
+  HBridgeMotor(byte pin1A, byte pin2A, byte pin1B, byte pin2B);
 
-    /**
-    * @brief Sets the state of the second motor.
-    *
-    * This function sets the state of the second motor based on the input parameters. The first parameter, 'isOn', determines whether the motor should be turned on or off. If 'isOn' is true, the motor will be turned on; if it is false, the motor will be turned off. The second parameter, 'rotationDirection', determines the direction of the motor's rotation. It can take the values 1 or 2, corresponding to the first and second direction pins of the motor, respectively.
-    *
-    * @param[in] isOn A boolean value indicating whether the motor should be turned on (true) or off (false).
-    * @param[in] rotationDirection An integer value representing the direction of the motor's rotation. It can take the values 1 or 2, corresponding to the first and second direction pins of the motor, respectively.
-    */
-    int setMotorB(bool isOn, byte rotationDirection);
+  /**
+   * @brief Constructor for HBridgeMotor with specified pins for one motor.
+   * 
+   * @param pin1A Pin number for motor A input 1.
+   * @param pin2A Pin number for motor A input 2.
+   */
+  HBridgeMotor(byte pin1A, byte pin2A);
 
-    // @param[in] velocity passado em porcentagem representa a velocidade do motor.
-    int setMotorB(int velocity, byte rotationDirection);
-    int setMotorB(int velocity, byte rotationDirection, byte pinPWM);
+  /**
+   * @brief Initializes the motor pins.
+   */
+  void initialize();
 
-    int continuousSetMotorA(uint8_t isOn, byte rotationDirection);
-    int continuousSetMotorB(uint8_t isOn, byte rotationDirection);
+  /**
+   * @brief Sets the state of motor A.
+   * 
+   * @param isOn Boolean indicating whether the motor is on or off.
+   * @param rotationDirection Direction of rotation (0 or 1).
+   * @return int Status of the operation.
+   */
+  int setMotorA(bool isOn, byte rotationDirection);
+
+  /**
+   * @brief Sets the velocity and direction of motor A.
+   * 
+   * @param velocity Speed of the motor (0-255).
+   * @param rotationDirection Direction of rotation (0 or 1).
+   * @return int Status of the operation.
+   */
+  int setMotorA(int velocity, byte rotationDirection);
+
+  /**
+   * @brief Sets the velocity, direction, and PWM pin of motor A.
+   * 
+   * @param velocity Speed of the motor (0-255).
+   * @param rotationDirection Direction of rotation (0 or 1).
+   * @param pinPWM PWM pin for motor A.
+   * @return int Status of the operation.
+   */
+  int setMotorA(int velocity, byte rotationDirection, byte pinPWM);
+
+  /**
+   * @brief Sets the state of motor B.
+   * 
+   * @param isOn Boolean indicating whether the motor is on or off.
+   * @param rotationDirection Direction of rotation (0 or 1).
+   * @return int Status of the operation.
+   */
+  int setMotorB(bool isOn, byte rotationDirection);
+
+  /**
+   * @brief Sets the velocity and direction of motor B.
+   * 
+   * @param velocity Speed of the motor (0-255).
+   * @param rotationDirection Direction of rotation (0 or 1).
+   * @return int Status of the operation.
+   */
+  int setMotorB(int velocity, byte rotationDirection);
+
+  /**
+   * @brief Sets the velocity, direction, and PWM pin of motor B.
+   * 
+   * @param velocity Speed of the motor (0-255).
+   * @param rotationDirection Direction of rotation (0 or 1).
+   * @param pinPWM PWM pin for motor B.
+   * @return int Status of the operation.
+   */
+  int setMotorB(int velocity, byte rotationDirection, byte pinPWM);
+
+  /**
+   * @brief Continuously sets the state of motor A.
+   * 
+   * @param isOn Boolean indicating whether the motor is on or off.
+   * @param rotationDirection Direction of rotation (0 or 1).
+   * @return int Status of the operation.
+   */
+  int continuousSetMotorA(uint8_t isOn, byte rotationDirection);
+
+  /**
+   * @brief Continuously sets the state of motor B.
+   * 
+   * @param isOn Boolean indicating whether the motor is on or off.
+   * @param rotationDirection Direction of rotation (0 or 1).
+   * @return int Status of the operation.
+   */
+  int continuousSetMotorB(uint8_t isOn, byte rotationDirection);
 };
